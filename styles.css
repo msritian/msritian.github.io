@@ -187,10 +187,10 @@ html{ scroll-behavior: smooth }
 .hero-photo img{ width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--border); object-fit: cover; background: var(--card) }
 /* Elevate the hero heading to feel like an H1 */
 .hero-quote blockquote{
-  margin: 0 0 10px; color: var(--fg);
-  font-weight: 700; letter-spacing: -0.01em;
-  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
-  line-height: 1.2;
+  margin: 0 0 8px; color: var(--fg);
+  font-weight: 600; letter-spacing: -0.01em;
+  font-size: clamp(1.35rem, 1.1rem + 1.2vw, 2rem);
+  line-height: 1.25;
 }
 .hero-summary{ margin-top: 10px; display:flex; flex-wrap: wrap; gap: 8px }
 .hero-summary .badge{ background: color-mix(in oklab, var(--bg) 90%, transparent); border-color: var(--border); font-size: .9rem; padding: 6px 10px }
