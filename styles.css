@@ -147,7 +147,12 @@ html{ scroll-behavior: smooth }
   content: ""; position: absolute; left: 0; top: .58em; width: 9px; height: 9px; border-radius: 999px;
   background: transparent; border: 2px solid color-mix(in oklab, var(--fg) 70%, transparent);
 }
-#timeline-list .t-date{ color: var(--muted); font-size: .9rem; text-align: right; padding: 0 8px }
+#timeline-list .t-date{ color: var(--muted); font-size: .85rem; text-align: right; padding: 0 8px }
+#timeline-list .t-date span{
+  display: inline-block; padding: 4px 10px; border-radius: 999px;
+  background: color-mix(in oklab, var(--bg) 85%, transparent);
+  border:1px solid var(--border);
+}
 #timeline-list .t-item.right .t-date{ text-align: left }
 #timeline-list .t-badges{ display:flex; flex-wrap: wrap; gap: 6px; margin-top: 6px }
 #timeline-list .badge{ background: var(--bg); border:1px solid var(--border); color: var(--muted); padding: 2px 8px; border-radius: 999px; font-size: .8rem }
@@ -189,9 +194,11 @@ html{ scroll-behavior: smooth }
 .hero-quote blockquote{
   margin: 0 0 8px; color: var(--fg);
   font-weight: 600; letter-spacing: -0.01em;
-  font-size: clamp(1.35rem, 1.1rem + 1.2vw, 2rem);
-  line-height: 1.25;
+  font-size: clamp(1.25rem, 1.05rem + 1.0vw, 1.8rem);
+  line-height: 1.2;
+  white-space: normal;
 }
+@media (min-width: 1024px){ .hero-quote blockquote{ white-space: nowrap } }
 .hero-summary{ margin-top: 10px; display:flex; flex-wrap: wrap; gap: 8px }
 .hero-summary .badge{ background: color-mix(in oklab, var(--bg) 90%, transparent); border-color: var(--border); font-size: .9rem; padding: 6px 10px }
 .hero-cta{ display:flex; gap:10px; margin-top: 12px }

@@ -163,7 +163,7 @@ function renderTimeline(items) {
       const meta = el("div", { class: "meta" }, i.location || "");
       const bullets = el("ul", {}, (i.highlights || []).map(h => el("li", {}, h)));
       const card = el("div", { class: "t-card" }, [h3, meta, bullets]);
-      const date = el("div", { class: "t-date" }, i.dates || "");
+  const date = el("div", { class: "t-date" }, i.dates ? el("span", {}, i.dates) : "");
       const dotMid = el("div", { class: "t-col mid" }, el("div", { class: "t-dot" }));
       let leftCol, rightCol;
       if (side === 'left') {
@@ -182,10 +182,25 @@ function renderEducation(items) {
   const ul = document.getElementById("education-list");
   if (!ul) return;
   ul.innerHTML = "";
-  (items || []).forEach(e => {
+  (items || []).forEach((e, idx) => {
     const title = el("strong", {}, `${e.degree} — ${e.school}`);
     const meta = el("div", { class: "meta" }, [e.location || "", e.dates ? ` • ${e.dates}` : "", e.gpa ? ` • GPA ${e.gpa}` : ""].join(""));
-    ul.append(el("li", {}, [title, meta]));
+    const li = el("li", {}, [title, meta]);
+    // Add focus badges only for the most recent education if provided on page request
+    if (idx === 0) {
+      const focus = [
+        "AI",
+        "Natural Language Processing",
+        "Multimodal AI",
+        "Generative AI",
+        "LLM",
+        "Distributed Systems",
+        "System Design"
+      ];
+      const badges = el("div", { class: "badges" }, focus.map(f => el("span", { class: "badge" }, f)));
+      li.append(badges);
+    }
+    ul.append(li);
   });
 }
 
