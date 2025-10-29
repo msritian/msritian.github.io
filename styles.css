@@ -190,6 +190,17 @@ html{ scroll-behavior: smooth }
 .top-social{ display:none; gap:10px }
 @media(min-width:1024px){ .top-social{ display:flex } }
 
+/* Screen-reader only utility */
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+
+/* Icon buttons in top-right social */
+.top-social a{ width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; border:1px solid var(--border); background: color-mix(in oklab, var(--bg) 94%, transparent) }
+.top-social a:hover{ background: var(--accent-weak); border-color: var(--fg) }
+.top-social svg{ width:18px; height:18px; display:block }
+.top-social .icon-github svg{ fill: var(--fg) }
+.top-social .icon-linkedin svg{ fill: var(--fg) }
+.top-social .icon-mail svg{ stroke: var(--fg); fill: none }
+
 .hero{ padding: 56px 0 }
 .hero-inner{ display:grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: start }
 .hero-photo img{ width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--border); object-fit: cover; background: var(--card) }

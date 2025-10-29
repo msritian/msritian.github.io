@@ -255,8 +255,39 @@ async function boot() {
     // duplicate socials for top bar on large screens
     const top = document.getElementById("top-social");
     if (top) {
+      top.innerHTML = "";
+      // Map known labels to icons
+      const makeIcon = (label) => {
+        const lower = (label || "").toLowerCase();
+        if (lower.includes("github")) {
+          return el("svg", { viewBox: "0 0 24 24", "aria-hidden": "true" }, [
+            el("path", { d: "M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.55l-.02-2.02c-3.2.7-3.87-1.54-3.87-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.57-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.19-3.07-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.17.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.48 3.17-1.17 3.17-1.17.64 1.59.24 2.77.12 3.06.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.37-5.26 5.65.42.36.8 1.07.8 2.16l-.01 3.2c0 .31.21.67.8.55A11.5 11.5 0 0 0 12 .5z" })
+          ]);
+        }
+        if (lower.includes("linkedin")) {
+          return el("svg", { viewBox: "0 0 24 24", "aria-hidden": "true" }, [
+            el("path", { d: "M20.45 20.45h-3.57v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.32V9h3.42v1.56h.05c.48-.91 1.66-1.85 3.41-1.85 3.65 0 4.33 2.4 4.33 5.53v6.21zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z" })
+          ]);
+        }
+        if (lower.includes("email") || lower.includes("mail")) {
+          return el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
+            el("rect", { x: "3", y: "5", width: "18", height: "14", rx: "2" }),
+            el("path", { d: "m3 7 9 6 9-6" })
+          ]);
+        }
+        return null;
+      };
       (profile.links || []).forEach(l => {
-        const a = el("a", { href: l.href, target: "_blank", rel: "noopener noreferrer" }, l.label);
+        const icon = makeIcon(l.label);
+        const classes = ["icon-btn"]; if (icon){
+          if (l.label.toLowerCase().includes("github")) classes.push("icon-github");
+          else if (l.label.toLowerCase().includes("linkedin")) classes.push("icon-linkedin");
+          else classes.push("icon-mail");
+        }
+        const a = el("a", { class: classes.join(" "), href: l.href, target: "_blank", rel: "noopener noreferrer", title: l.label }, [
+          icon || document.createTextNode(l.label),
+          el("span", { class: "sr-only" }, l.label)
+        ]);
         top.append(a);
       });
     }
