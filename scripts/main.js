@@ -157,7 +157,7 @@ function renderTimeline(items) {
     .sort((a,b) => (b.sort || 0) - (a.sort || 0))
     .forEach((i, idx) => {
       const side = idx % 2 === 0 ? 'left' : 'right';
-      const cardTitle = i.role ? `${i.role} — ${i.company}` : i.title || i.company || "";
+  const cardTitle = i.role ? `${i.role} — ${i.company}` : (i.company || i.title || "");
       const h3 = el("h3", {}, cardTitle);
       // Remove dates from inside cards; keep only location here
       const meta = el("div", { class: "meta" }, i.location || "");
