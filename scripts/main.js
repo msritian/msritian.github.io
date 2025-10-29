@@ -186,18 +186,8 @@ function renderEducation(items) {
     const title = el("strong", {}, `${e.degree} — ${e.school}`);
     const meta = el("div", { class: "meta" }, [e.location || "", e.dates ? ` • ${e.dates}` : "", e.gpa ? ` • GPA ${e.gpa}` : ""].join(""));
     const li = el("li", {}, [title, meta]);
-    // Add focus badges only for the most recent education if provided on page request
-    if (idx === 0) {
-      const focus = [
-        "AI",
-        "Natural Language Processing",
-        "Multimodal AI",
-        "Generative AI",
-        "LLM",
-        "Distributed Systems",
-        "System Design"
-      ];
-      const badges = el("div", { class: "badges" }, focus.map(f => el("span", { class: "badge" }, f)));
+    if (Array.isArray(e.tags) && e.tags.length) {
+      const badges = el("div", { class: "badges" }, e.tags.map(t => el("span", { class: "badge" }, t)));
       li.append(badges);
     }
     ul.append(li);
