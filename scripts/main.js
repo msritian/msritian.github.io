@@ -5,11 +5,12 @@ async function loadJSON(path) {
 }
 
 function el(tag, attrs = {}, children = []) {
-  const node = document.createElement(tag);
+  const svgTags = new Set(["svg","path","rect","circle","line","polyline","polygon","g"]); 
+  const node = svgTags.has(tag) ? document.createElementNS("http://www.w3.org/2000/svg", tag) : document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
     if (k === "class") node.className = v;
     else if (k === "html") node.innerHTML = v;
-    else if (k === "href" || k === "target" || k === "rel") node.setAttribute(k, v);
+    else if (k === "href" || k === "target" || k === "rel" || k === "viewBox" || k === "fill" || k === "stroke" || k === "stroke-width" || k === "aria-hidden") node.setAttribute(k, v);
     else node.setAttribute(k, v);
   }
   const kids = Array.isArray(children) ? children : [children];
