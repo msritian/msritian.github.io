@@ -2,7 +2,7 @@
   "name": "Shivam Mittal",
   "tagline": "Student • Engineer • Researcher",
   "bio": "Short single-paragraph bio. What you do, where, and your core interests. Keep it concise for a sidebar.",
-  "avatar": "assets/avatar-placeholder.svg",
+  "avatar": "https://github.com/msritian.png?size=400",
   "links": [
     { "label": "GitHub", "href": "https://github.com/msritian" },
     { "label": "LinkedIn", "href": "https://www.linkedin.com/in/shivam-mittal-0b916716b/" },
