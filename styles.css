@@ -124,12 +124,15 @@ html{ scroll-behavior: smooth }
 }
 #timeline-list li{
   position: relative; padding: 12px 12px 12px 28px; border:1px solid var(--border); border-radius: var(--radius); background: var(--card);
+  display:grid; grid-template-columns: 140px 1fr; gap: 10px;
 }
 #timeline-list li::before{
   content: ""; position: absolute; left: 8px; top: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--fg);
   box-shadow: 0 0 0 3px var(--bg);
 }
 #timeline-list .meta{ color: var(--muted) }
+#timeline-list .t-date{ font-size: .9rem; color: var(--muted) }
+#timeline-list .t-bullets{ margin: 6px 0 0 18px }
 #timeline-list strong{ font-size: 1rem }
 
 /* Skills grid tighter like badge groups */

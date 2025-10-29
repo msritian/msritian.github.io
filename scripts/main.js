@@ -155,8 +155,10 @@ function renderTimeline(items) {
     .forEach(i => {
       const title = el("strong", {}, i.role ? `${i.role} — ${i.company}` : i.title || i.company || "");
       const meta = el("div", { class: "meta" }, [i.location || "", (i.dates ? ` • ${i.dates}` : "")].join(""));
-      const bullets = el("div", { class: "meta" }, (i.highlights || []).map(h => `• ${h}`).join("\n"));
-      ul.append(el("li", {}, [title, meta, bullets]));
+      const bullets = el("ul", { class: "t-bullets" }, (i.highlights || []).map(h => el("li", {}, h)));
+      const body = el("div", { class: "t-body" }, [title, meta, bullets]);
+      const date = el("div", { class: "t-date" }, i.dates || "");
+      ul.append(el("li", {}, [date, body]));
     });
 }
 
