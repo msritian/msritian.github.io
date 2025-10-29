@@ -159,7 +159,8 @@ function renderTimeline(items) {
       const side = idx % 2 === 0 ? 'left' : 'right';
       const cardTitle = i.role ? `${i.role} — ${i.company}` : i.title || i.company || "";
       const h3 = el("h3", {}, cardTitle);
-      const meta = el("div", { class: "meta" }, [i.location || "", i.location && i.dates ? " • " : "", i.dates || ""].join(""));
+      // Remove dates from inside cards; keep only location here
+      const meta = el("div", { class: "meta" }, i.location || "");
       const bullets = el("ul", {}, (i.highlights || []).map(h => el("li", {}, h)));
       const card = el("div", { class: "t-card" }, [h3, meta, bullets]);
       const date = el("div", { class: "t-date" }, i.dates || "");
@@ -236,7 +237,7 @@ async function boot() {
   if (profile.avatar) { const ha = document.getElementById("hero-avatar"); if (ha) ha.src = profile.avatar; }
   if (about?.location) { const loc = document.getElementById("location"); if (loc) loc.textContent = about.location; }
   if (about?.location) { const mloc = document.getElementById("mini-location"); if (mloc) mloc.textContent = about.location; }
-  const quote = about?.quote || "Build what you wish existed.";
+  const quote = about?.quote || "Engineering Intelligent Systems for Real-World Impact.";
   const q = document.getElementById("hero-quote-text");
   if (q) q.textContent = quote;
     if (about?.resume) {
@@ -258,6 +259,14 @@ async function boot() {
     renderEducation(education || []);
     renderSkills(skills || []);
     renderProjects(projects || []);
+
+    // Render hero summary chips if provided
+    const summaryEl = document.getElementById("hero-summary");
+    const summaryItems = about?.summary || [];
+    if (summaryEl && Array.isArray(summaryItems) && summaryItems.length) {
+      summaryEl.innerHTML = "";
+      summaryItems.forEach(s => summaryEl.append(el("span", { class: "badge" }, s)));
+    }
 
     setupScrollSpy();
   } catch (e) {

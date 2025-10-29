@@ -1,5 +1,15 @@
 {
   "location": "Madison, WI, USA",
   "resume": "assets/Shivam_Mittal_Resume.pdf",
-  "quote": "AI is the great equalizer. Build what you wish existed."
+  "quote": "Engineering Intelligent Systems for Real-World Impact.",
+  "summary": [
+    "MSCS @ UW–Madison",
+    "NLP & LLMs",
+    "Generative & VLMs",
+    "Multimodal AI",
+    "Deep Learning",
+    "Computer Vision",
+    "Software Engineering",
+    "Open to Summer '26 Internships"
+  ]
 }
