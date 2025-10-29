@@ -172,6 +172,9 @@ html{ scroll-behavior: smooth }
 #skills-grid h3{ margin: 0 0 6px }
 #skills-grid .badges .badge{ background: var(--bg) }
 
+/* Education labels */
+.edu-label{ display:inline-block; margin-top: 8px; margin-right: 8px; color: var(--muted); font-size: .85rem }
+
 /* Projects grid similar to timeline cards */
 #projects-grid .card{ border:1px solid var(--border); border-radius: var(--radius); background: var(--card) }
 

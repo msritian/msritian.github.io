@@ -187,8 +187,9 @@ function renderEducation(items) {
     const meta = el("div", { class: "meta" }, [e.location || "", e.dates ? ` • ${e.dates}` : "", e.gpa ? ` • GPA ${e.gpa}` : ""].join(""));
     const li = el("li", {}, [title, meta]);
     if (Array.isArray(e.tags) && e.tags.length) {
+      const label = el("span", { class: "edu-label" }, "Coursework:");
       const badges = el("div", { class: "badges" }, e.tags.map(t => el("span", { class: "badge" }, t)));
-      li.append(badges);
+      li.append(label, badges);
     }
     ul.append(li);
   });
