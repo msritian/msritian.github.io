@@ -70,9 +70,32 @@
     <section id="contact" class="section">
       <div class="container">
         <div class="section-head"><h2>Get in Touch</h2></div>
-        <div class="contact">
-          <div class="social" id="social-links"></div>
-          <ul id="contact-list" class="list compact"></ul>
+        <div class="contact-grid">
+          <div class="contact-left">
+            <h3>Connect With Me</h3>
+            <div id="contact-links" class="contact-links"></div>
+            <div class="location">
+              <span id="contact-location" class="muted"></span>
+            </div>
+          </div>
+          <div class="contact-right">
+            <h3>Send a Message</h3>
+            <form id="contact-form" class="contact-form">
+              <label>
+                <span class="label">Name</span>
+                <input id="cf-name" name="name" type="text" class="input" placeholder="Your name" />
+              </label>
+              <label>
+                <span class="label">Email</span>
+                <input id="cf-email" name="email" type="email" class="input" placeholder="you@example.com" />
+              </label>
+              <label>
+                <span class="label">Message</span>
+                <textarea id="cf-message" name="message" rows="5" class="textarea" placeholder="Your message..."></textarea>
+              </label>
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

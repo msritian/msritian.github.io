@@ -223,3 +223,17 @@ html{ scroll-behavior: smooth }
 .btn.ghost:hover{ background: var(--accent-weak); color: var(--fg) }
 
 .footer{ border-top:1px solid var(--border); padding: 20px 0; color: var(--muted) }
+
+/* Contact section */
+.contact-grid{ display:grid; grid-template-columns: 1fr; gap: 20px }
+@media(min-width:900px){ .contact-grid{ grid-template-columns: 1fr 1fr } }
+.contact-left h3, .contact-right h3{ margin: 0 0 12px; font-size: 1.1rem }
+.contact-links{ display:flex; flex-direction: column; gap: 10px; margin-bottom: 16px }
+.contact-links a{ display:flex; align-items:center; gap: 10px; color: var(--fg); border:1px solid var(--border); background: var(--card); padding: 10px 12px; border-radius: var(--radius) }
+.contact-links a:hover{ border-color: var(--fg) }
+.contact-links svg{ width:18px; height:18px }
+.contact-form{ display:flex; flex-direction: column; gap: 10px }
+.label{ display:block; margin-bottom: 6px; color: var(--muted); font-size: .9rem }
+.input, .textarea{ width:100%; border:1px solid var(--border); border-radius: var(--radius); background: var(--card); color: var(--fg); padding: 10px 12px }
+.input:focus, .textarea:focus{ outline:none; border-color: var(--fg) }
+.location{ margin-top: 10px }

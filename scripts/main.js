@@ -29,14 +29,46 @@ function renderSocialLinks(links) {
 }
 
 function renderContact(contact) {
-  const ul = document.getElementById("contact-list");
-  if (!ul) return;
-  ul.innerHTML = "";
-  (contact || []).forEach(c => {
-    const left = el("span", {}, c.label);
-    const right = c.href ? el("a", { href: c.href, target: "_blank", rel: "noopener noreferrer" }, c.value) : el("span", {}, c.value);
-    ul.append(el("li", {}, [left, right]));
-  });
+  const linksBox = document.getElementById("contact-links");
+  if (!linksBox) return;
+  linksBox.innerHTML = "";
+
+  const makeIcon = (label) => {
+    const lower = (label || "").toLowerCase();
+    if (lower.includes("github")) {
+      return el("svg", { viewBox: "0 0 24 24", "aria-hidden": "true" }, [
+        el("path", { d: "M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.55l-.02-2.02c-3.2.7-3.87-1.54-3.87-1.54-.53-1.35-1.3-1.71-1.3-1.71-1.06-.73.08-.72.08-.72 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.75-1.57-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.19-3.07-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.17.92-.26 1.9-.39 2.88-.39.98 0 1.96.13 2.88.39 2.2-1.48 3.17-1.17 3.17-1.17.64 1.59.24 2.77.12 3.06.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.37-5.26 5.65.42.36.8 1.07.8 2.16l-.01 3.2c0 .31.21.67.8.55A11.5 11.5 0 0 0 12 .5z" })
+      ]);
+    }
+    if (lower.includes("linkedin")) {
+      return el("svg", { viewBox: "0 0 24 24", "aria-hidden": "true" }, [
+        el("path", { d: "M20.45 20.45h-3.57v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.32V9h3.42v1.56h.05c.48-.91 1.66-1.85 3.41-1.85 3.65 0 4.33 2.4 4.33 5.53v6.21zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z" })
+      ]);
+    }
+    if (lower.includes("email") || lower.includes("mail")) {
+      return el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
+        el("rect", { x: "3", y: "5", width: "18", height: "14", rx: "2" }),
+        el("path", { d: "m3 7 9 6 9-6" })
+      ]);
+    }
+    return null;
+  };
+
+  (contact || [])
+    .filter(c => (c.label || "").toLowerCase() !== "alt email")
+    .forEach(c => {
+      const icon = makeIcon(c.label);
+      const text = c.value || c.label;
+      const isEmail = (c.label || "").toLowerCase().includes("email") || (c.label || "").toLowerCase().includes("mail");
+      const href = c.href || (isEmail && c.value ? `mailto:${c.value}` : "#");
+      const attrs = { href };
+      if (href.startsWith("http")) {
+        attrs.target = "_blank";
+        attrs.rel = "noopener noreferrer";
+      }
+      const a = el("a", attrs, [icon, el("span", {}, text)].filter(Boolean));
+      linksBox.append(a);
+    });
 }
 
 function makeTagFilters(items, key, onChange) {
@@ -278,7 +310,16 @@ async function boot() {
         }
         return null;
       };
-      (profile.links || []).forEach(l => {
+      const headerLinks = (profile.links || []).filter((l, idx, arr) => {
+        const lower = (l.label || "").toLowerCase();
+        if (lower.includes("alt email")) return false; // remove alt email from header
+        if (lower.includes("email") || lower.includes("mail")) {
+          const first = arr.findIndex(x => (x.label || "").toLowerCase().includes("email") || (x.label || "").toLowerCase().includes("mail"));
+          return idx === first; // keep only the first email-like link
+        }
+        return true;
+      });
+      headerLinks.forEach(l => {
         const icon = makeIcon(l.label);
         const classes = ["icon-btn"]; if (icon){
           if (l.label.toLowerCase().includes("github")) classes.push("icon-github");
@@ -304,6 +345,23 @@ async function boot() {
     if (summaryEl && Array.isArray(summaryItems) && summaryItems.length) {
       summaryEl.innerHTML = "";
       summaryItems.forEach(s => summaryEl.append(el("span", { class: "badge" }, s)));
+    }
+
+    // Contact extras: location text and form submit handler
+    const cl = document.getElementById("contact-location");
+    if (cl && about?.location) cl.textContent = about.location;
+    const form = document.getElementById("contact-form");
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("cf-name")?.value || "";
+        const email = document.getElementById("cf-email")?.value || "";
+        const message = document.getElementById("cf-message")?.value || "";
+        const to = (profile.contact || []).find(c => (c.label || "").toLowerCase().includes("email"))?.value || "";
+        const subject = encodeURIComponent(`Message from ${name || "Website"}`);
+        const body = encodeURIComponent(`${message}\n\nFrom: ${name}${email ? ` <${email}>` : ''}`);
+        if (to) window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      });
     }
 
     setupScrollSpy();
