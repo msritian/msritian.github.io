@@ -155,13 +155,25 @@ function renderTimeline(items) {
   ul.innerHTML = "";
   (items || [])
     .sort((a,b) => (b.sort || 0) - (a.sort || 0))
-    .forEach(i => {
-      const title = el("strong", {}, i.role ? `${i.role} — ${i.company}` : i.title || i.company || "");
-      const meta = el("div", { class: "meta" }, [i.location || "", (i.dates ? ` • ${i.dates}` : "")].join(""));
-      const bullets = el("ul", { class: "t-bullets" }, (i.highlights || []).map(h => el("li", {}, h)));
-      const body = el("div", { class: "t-body" }, [title, meta, bullets]);
+    .forEach((i, idx) => {
+      const side = idx % 2 === 0 ? 'left' : 'right';
+      const cardTitle = i.role ? `${i.role} — ${i.company}` : i.title || i.company || "";
+      const h3 = el("h3", {}, cardTitle);
+      const meta = el("div", { class: "meta" }, [i.location || "", i.location && i.dates ? " • " : "", i.dates || ""].join(""));
+      const bullets = el("ul", {}, (i.highlights || []).map(h => el("li", {}, h)));
+      const card = el("div", { class: "t-card" }, [h3, meta, bullets]);
       const date = el("div", { class: "t-date" }, i.dates || "");
-      ul.append(el("li", {}, [date, body]));
+      const dotMid = el("div", { class: "t-col mid" }, el("div", { class: "t-dot" }));
+      let leftCol, rightCol;
+      if (side === 'left') {
+        leftCol = el("div", { class: "t-col left" }, [card]);
+        rightCol = el("div", { class: "t-col right" }, [date]);
+      } else {
+        leftCol = el("div", { class: "t-col left" }, [date]);
+        rightCol = el("div", { class: "t-col right" }, [card]);
+      }
+      const li = el("li", { class: `t-item ${side}` }, [leftCol, dotMid, rightCol]);
+      ul.append(li);
     });
 }
 
