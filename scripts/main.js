@@ -276,7 +276,7 @@ async function boot() {
   if (profile.avatar) { const ha = document.getElementById("hero-avatar"); if (ha) ha.src = profile.avatar; }
   if (about?.location) { const loc = document.getElementById("location"); if (loc) loc.textContent = about.location; }
   if (about?.location) { const mloc = document.getElementById("mini-location"); if (mloc) mloc.textContent = about.location; }
-  const quote = about?.quote || "Engineering Intelligent Systems for Real-World Impact.";
+  const quote = about?.quote || "Engineering Intelligent Systems for Real-World Impact";
   const q = document.getElementById("hero-quote-text");
   if (q) q.textContent = quote;
     if (about?.resume) {
