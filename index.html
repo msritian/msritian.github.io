@@ -16,74 +16,63 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="id">
-        <img id="avatar" class="avatar" src="assets/avatar-placeholder.svg" alt="Avatar" />
-        <div class="who">
-          <h1 id="name">Shivam Mittal</h1>
-          <p id="tagline" class="muted">Engineer • Researcher</p>
-          <p id="location" class="small muted"></p>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="profile-mini">
+        <img id="avatar" class="avatar small" src="assets/avatar-placeholder.svg" alt="Avatar" />
+        <div>
+          <div id="name" class="name">Shivam Mittal</div>
+          <div id="mini-location" class="muted small"></div>
         </div>
       </div>
-
-      <nav class="nav">
-        <a href="#timeline" data-nav>Timeline</a>
-        <a href="#education" data-nav>Education</a>
-        <a href="#skills" data-nav>Skills</a>
-        <a href="#projects" data-nav>Projects</a>
-        <a href="#contact" data-nav>Contact</a>
-        <a href="/research/">Research →</a>
+      <nav class="top-nav">
+        <a href="#timeline">Timeline</a>
+        <a href="#contact">Contact</a>
+        <a href="/research/">Research</a>
       </nav>
+      <div class="top-social" id="top-social"></div>
+    </div>
+  </header>
 
-      <div class="social" id="social-links"></div>
-
-      <p id="bio" class="bio muted"></p>
-
-      <div class="small">
-        <a id="resume-link" href="#" target="_blank" rel="noopener noreferrer">Download Resume</a>
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-photo">
+          <img id="hero-avatar" src="assets/avatar-placeholder.svg" alt="Profile" />
+        </div>
+        <div class="hero-quote">
+          <blockquote id="hero-quote-text"></blockquote>
+          <p id="tagline" class="muted"></p>
+          <p id="location" class="muted small"></p>
+          <div class="hero-cta">
+            <a id="resume-link" class="btn" href="#" target="_blank" rel="noopener noreferrer">Download Resume</a>
+            <a class="btn ghost" href="/research/">Research</a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="footer small muted">
-        © <span id="year"></span> <span id="footer-name">Shivam Mittal</span>
+    <section id="timeline" class="section">
+      <div class="container">
+        <div class="section-head"><h2>Timeline</h2></div>
+        <ul id="timeline-list" class="timeline"></ul>
       </div>
-    </aside>
+    </section>
 
-    <main class="content">
-      <section id="timeline" class="section">
-        <div class="section-head">
-          <h2>Timeline</h2>
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head"><h2>Get in Touch</h2></div>
+        <div class="contact">
+          <div class="social" id="social-links"></div>
+          <ul id="contact-list" class="list compact"></ul>
         </div>
-        <ul id="timeline-list" class="list"></ul>
-      </section>
+      </div>
+    </section>
 
-      <section id="education" class="section">
-        <div class="section-head">
-          <h2>Education</h2>
-        </div>
-        <ul id="education-list" class="list"></ul>
-      </section>
-
-      <section id="skills" class="section">
-        <div class="section-head">
-          <h2>Skills</h2>
-        </div>
-        <div id="skills-grid" class="grid"></div>
-      </section>
-
-      <section id="projects" class="section">
-        <div class="section-head">
-          <h2>Projects & Achievements</h2>
-        </div>
-        <div id="projects-grid" class="grid"></div>
-      </section>
-
-      <section id="contact" class="section">
-        <h2>Contact</h2>
-        <ul id="contact-list" class="list compact"></ul>
-      </section>
-    </main>
-  </div>
+    <footer class="footer">
+      <div class="container">© <span id="year"></span> <span id="footer-name">Shivam Mittal</span></div>
+    </footer>
+  </main>
 
   <script src="scripts/main.js" defer></script>
 </body>

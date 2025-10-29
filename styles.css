@@ -1,24 +1,25 @@
 :root{
-  --bg: #ffffff;
-  --fg: #0a0a0a;
-  --muted: #6b7280;
-  --card: #f8fafc;
-  --border: #e5e7eb;
-  --accent: #111827;
-  --accent-weak: #f3f4f6;
+  /* Dark theme as default to better match reference */
+  --bg: #0b0f1a;
+  --fg: #edf1f7;
+  --muted: #9aa3b2;
+  --card: #0f172a;
+  --border: #1f2a37;
+  --accent: #e5e7eb;
+  --accent-weak: #0c1222;
   --radius: 12px;
   --col-gap: 40px;
   --content-w: 760px;
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme: light){
   :root{
-    --bg: #0b0f1a;
-    --fg: #edf1f7;
-    --muted: #9aa3b2;
-    --card: #0f172a;
-    --border: #1f2a37;
-    --accent: #e5e7eb;
-    --accent-weak: #0c1222;
+    --bg: #ffffff;
+    --fg: #0a0a0a;
+    --muted: #6b7280;
+    --card: #f8fafc;
+    --border: #e5e7eb;
+    --accent: #111827;
+    --accent-weak: #f3f4f6;
   }
 }
 *{box-sizing:border-box}
@@ -142,3 +143,25 @@ html{ scroll-behavior: smooth }
 
 /* Projects grid similar to timeline cards */
 #projects-grid .card{ border:1px solid var(--border); border-radius: var(--radius); background: var(--card) }
+
+/* New header/hero layout */
+.container{ max-width: 1000px; margin: 0 auto; padding: 0 20px }
+.header{ position: sticky; top: 0; z-index: 20; backdrop-filter: blur(6px); border-bottom:1px solid var(--border); background: color-mix(in oklab, var(--bg) 88%, transparent) }
+.header-inner{ display:flex; align-items:center; justify-content: space-between; padding: 10px 0 }
+.profile-mini{ display:flex; align-items:center; gap:10px }
+.avatar.small{ width:36px; height:36px; border-radius:50%; border:1px solid var(--border); background: var(--card); object-fit: cover }
+.name{ font-weight:600 }
+.top-nav{ display:none; gap:16px }
+@media(min-width:768px){ .top-nav{ display:flex } }
+.top-social{ display:none; gap:10px }
+@media(min-width:1024px){ .top-social{ display:flex } }
+
+.hero{ padding: 56px 0 }
+.hero-inner{ display:grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: center }
+.hero-photo img{ width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--border); object-fit: cover; background: var(--card) }
+.hero-quote blockquote{ font-size: 1.15rem; line-height: 1.7 }
+.hero-cta{ display:flex; gap:10px; margin-top: 12px }
+.btn{ display:inline-block; padding: 8px 12px; border-radius: 999px; border:1px solid var(--fg) }
+.btn.ghost{ border-color: var(--border) }
+
+.footer{ border-top:1px solid var(--border); padding: 20px 0; color: var(--muted) }

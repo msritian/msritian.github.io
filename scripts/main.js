@@ -211,17 +211,30 @@ async function boot() {
 
     document.getElementById("name").textContent = profile.name || "Shivam Mittal";
     document.getElementById("footer-name").textContent = profile.name || "Shivam Mittal";
-    document.getElementById("tagline").textContent = profile.tagline || "";
+  document.getElementById("tagline").textContent = profile.tagline || "";
     document.getElementById("bio").textContent = profile.bio || "";
     document.getElementById("year").textContent = new Date().getFullYear();
     if (profile.avatar) document.getElementById("avatar").src = profile.avatar;
+  if (profile.avatar) document.getElementById("hero-avatar").src = profile.avatar;
     if (about?.location) document.getElementById("location").textContent = about.location;
+  if (about?.location) document.getElementById("mini-location").textContent = about.location;
+  const quote = about?.quote || "Build what you wish existed.";
+  const q = document.getElementById("hero-quote-text");
+  if (q) q.textContent = quote;
     if (about?.resume) {
       const a = document.getElementById("resume-link");
       a.href = about.resume;
     }
 
     renderSocialLinks(profile.links || []);
+    // duplicate socials for top bar on large screens
+    const top = document.getElementById("top-social");
+    if (top) {
+      (profile.links || []).forEach(l => {
+        const a = el("a", { href: l.href, target: "_blank", rel: "noopener noreferrer" }, l.label);
+        top.append(a);
+      });
+    }
     renderContact(profile.contact || []);
     renderTimeline(timeline || []);
     renderEducation(education || []);
