@@ -134,6 +134,8 @@ html{ scroll-behavior: smooth }
   border: 2px solid color-mix(in oklab, var(--fg) 60%, transparent);
   opacity: 0.7; animation: pulse 2.2s ease-out infinite;
 }
+#timeline-list .t-item.left .t-dot::after{ clip-path: inset(-8px 50% -8px -8px) }
+#timeline-list .t-item.right .t-dot::after{ clip-path: inset(-8px -8px -8px 50%) }
 @keyframes pulse{ 0%{ transform: scale(.6); opacity:.7 } 70%{ transform: scale(1.25); opacity:0 } 100%{ transform: scale(.6); opacity:0 } }
 #timeline-list .t-card{ border:1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 14px }
 #timeline-list .t-card h3{ margin: 0 0 4px; font-size: 1rem }
