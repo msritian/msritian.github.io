@@ -209,15 +209,15 @@ async function boot() {
       loadJSON("data/projects.json").catch(() => ([])),
     ]);
 
-    document.getElementById("name").textContent = profile.name || "Shivam Mittal";
-    document.getElementById("footer-name").textContent = profile.name || "Shivam Mittal";
-  document.getElementById("tagline").textContent = profile.tagline || "";
-    document.getElementById("bio").textContent = profile.bio || "";
+  const elName = document.getElementById("name"); if (elName) elName.textContent = profile.name || "Shivam Mittal";
+  const elFooterName = document.getElementById("footer-name"); if (elFooterName) elFooterName.textContent = profile.name || "Shivam Mittal";
+  const elTag = document.getElementById("tagline"); if (elTag) elTag.textContent = profile.tagline || "";
+  const elBio = document.getElementById("bio"); if (elBio) elBio.textContent = profile.bio || "";
     document.getElementById("year").textContent = new Date().getFullYear();
-    if (profile.avatar) document.getElementById("avatar").src = profile.avatar;
-  if (profile.avatar) document.getElementById("hero-avatar").src = profile.avatar;
-    if (about?.location) document.getElementById("location").textContent = about.location;
-  if (about?.location) document.getElementById("mini-location").textContent = about.location;
+  if (profile.avatar) { const a = document.getElementById("avatar"); if (a) a.src = profile.avatar; }
+  if (profile.avatar) { const ha = document.getElementById("hero-avatar"); if (ha) ha.src = profile.avatar; }
+  if (about?.location) { const loc = document.getElementById("location"); if (loc) loc.textContent = about.location; }
+  if (about?.location) { const mloc = document.getElementById("mini-location"); if (mloc) mloc.textContent = about.location; }
   const quote = about?.quote || "Build what you wish existed.";
   const q = document.getElementById("hero-quote-text");
   if (q) q.textContent = quote;
@@ -226,7 +226,7 @@ async function boot() {
       a.href = about.resume;
     }
 
-    renderSocialLinks(profile.links || []);
+  renderSocialLinks(profile.links || []);
     // duplicate socials for top bar on large screens
     const top = document.getElementById("top-social");
     if (top) {
@@ -244,9 +244,9 @@ async function boot() {
     setupScrollSpy();
   } catch (e) {
     console.error(e);
-    const content = document.querySelector(".content");
+    const host = document.querySelector("#timeline .container") || document.querySelector("main") || document.body;
     const warn = el("div", { class: "card" }, "Failed to load content. Please check your data/*.json files.");
-    content.prepend(warn);
+    if (host?.prepend) host.prepend(warn);
   }
 }
 
