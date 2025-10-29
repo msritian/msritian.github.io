@@ -28,6 +28,7 @@ body{
   background: var(--bg); color: var(--fg); line-height: 1.6;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
+a,button{transition: all .15s ease}
 a{color: inherit; text-decoration: none}
 a:hover{ text-decoration: underline; text-underline-offset: 3px }
 
@@ -115,3 +116,26 @@ h2{ font-size: 1.05rem; text-transform: none; letter-spacing: 0; margin: 0 }
 
 /* Smooth anchors */
 html{ scroll-behavior: smooth }
+
+/* Timeline visuals */
+#timeline-list{ position: relative; list-style: none; padding: 0 0 0 0; margin: 0; display: flex; flex-direction: column; gap: 16px }
+#timeline-list::before{
+  content: ""; position: absolute; left: 13px; top: 0; bottom: 0; width: 2px; background: var(--border);
+}
+#timeline-list li{
+  position: relative; padding: 12px 12px 12px 28px; border:1px solid var(--border); border-radius: var(--radius); background: var(--card);
+}
+#timeline-list li::before{
+  content: ""; position: absolute; left: 8px; top: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--fg);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+#timeline-list .meta{ color: var(--muted) }
+#timeline-list strong{ font-size: 1rem }
+
+/* Skills grid tighter like badge groups */
+#skills-grid .card{ padding: 12px }
+#skills-grid h3{ margin: 0 0 6px }
+#skills-grid .badges .badge{ background: var(--bg) }
+
+/* Projects grid similar to timeline cards */
+#projects-grid .card{ border:1px solid var(--border); border-radius: var(--radius); background: var(--card) }
