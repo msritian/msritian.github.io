@@ -147,12 +147,64 @@ function setupScrollSpy() {
   sections.forEach(s => obs.observe(s));
 }
 
+function renderTimeline(items) {
+  const ul = document.getElementById("timeline-list");
+  ul.innerHTML = "";
+  (items || [])
+    .sort((a,b) => (b.sort || 0) - (a.sort || 0))
+    .forEach(i => {
+      const title = el("strong", {}, i.role ? `${i.role} — ${i.company}` : i.title || i.company || "");
+      const meta = el("div", { class: "meta" }, [i.location || "", (i.dates ? ` • ${i.dates}` : "")].join(""));
+      const bullets = el("div", { class: "meta" }, (i.highlights || []).map(h => `• ${h}`).join("\n"));
+      ul.append(el("li", {}, [title, meta, bullets]));
+    });
+}
+
+function renderEducation(items) {
+  const ul = document.getElementById("education-list");
+  ul.innerHTML = "";
+  (items || []).forEach(e => {
+    const title = el("strong", {}, `${e.degree} — ${e.school}`);
+    const meta = el("div", { class: "meta" }, [e.location || "", e.dates ? ` • ${e.dates}` : "", e.gpa ? ` • GPA ${e.gpa}` : ""].join(""));
+    ul.append(el("li", {}, [title, meta]));
+  });
+}
+
+function renderSkills(groups) {
+  const grid = document.getElementById("skills-grid");
+  grid.innerHTML = "";
+  (groups || []).forEach(g => {
+    const h3 = el("h3", {}, g.title || "");
+    const body = el("div", { class: "badges" }, (g.items || []).map(s => el("span", { class: "badge" }, s)));
+    grid.append(el("article", { class: "card" }, [h3, body]));
+  });
+}
+
+function renderProjects(projects) {
+  const grid = document.getElementById("projects-grid");
+  grid.innerHTML = "";
+  (projects || []).forEach(p => {
+    const titleNode = p.link ? el("a", { href: p.link, target: "_blank", rel: "noopener noreferrer" }, p.title) : el("span", {}, p.title || "");
+    const h3 = el("h3", {}, titleNode);
+    const desc = el("p", {}, p.description || "");
+    const meta = el("div", { class: "badges" }, [
+      p.org ? el("span", { class: "badge" }, p.org) : null,
+      p.when ? el("span", { class: "badge" }, p.when) : null,
+    ].filter(Boolean));
+    const tags = el("div", { class: "badges" }, (p.tags || []).map(t => el("span", { class: "badge" }, t)));
+    grid.append(el("article", { class: "card" }, [h3, desc, meta, tags]));
+  });
+}
+
 async function boot() {
   try {
-    const [profile, works, reading] = await Promise.all([
+    const [profile, about, timeline, education, skills, projects] = await Promise.all([
       loadJSON("data/profile.json"),
-      loadJSON("data/works.json"),
-      loadJSON("data/reading.json")
+      loadJSON("data/about.json").catch(() => ({})),
+      loadJSON("data/timeline.json").catch(() => ([])),
+      loadJSON("data/education.json").catch(() => ([])),
+      loadJSON("data/skills.json").catch(() => ([])),
+      loadJSON("data/projects.json").catch(() => ([])),
     ]);
 
     document.getElementById("name").textContent = profile.name || "Shivam Mittal";
@@ -161,11 +213,18 @@ async function boot() {
     document.getElementById("bio").textContent = profile.bio || "";
     document.getElementById("year").textContent = new Date().getFullYear();
     if (profile.avatar) document.getElementById("avatar").src = profile.avatar;
+    if (about?.location) document.getElementById("location").textContent = about.location;
+    if (about?.resume) {
+      const a = document.getElementById("resume-link");
+      a.href = about.resume;
+    }
 
     renderSocialLinks(profile.links || []);
     renderContact(profile.contact || []);
-    renderWorks(works || []);
-    renderReading(reading || []);
+    renderTimeline(timeline || []);
+    renderEducation(education || []);
+    renderSkills(skills || []);
+    renderProjects(projects || []);
 
     setupScrollSpy();
   } catch (e) {

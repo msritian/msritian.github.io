@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Computer Science",
+    "items": ["Data Structures", "Algorithms", "System Design", "Distributed Systems", "Microservices", "OOP", "SOLID"]
+  },
+  {
+    "title": "Languages & Frameworks",
+    "items": ["Python", "C++", "MySQL", "Cypher", "API design", "Git", "FastAPI", "Apache AGE", "GPU"]
+  },
+  {
+    "title": "AI/ML",
+    "items": ["Neural Networks", "PyTorch", "JAX", "scikit-learn", "XGBoost", "YOLO", "OpenCV", "Stable Diffusion"]
+  },
+  {
+    "title": "Generative & Agentic AI",
+    "items": ["Foundation Models", "Vision-Language Models", "LangChain", "LangGraph", "Hugging Face", "Transformers", "LLM Finetuning", "Agentic Orchestration", "RAG/GraphRAG", "LLMOps"]
+  },
+  {
+    "title": "Deployment & MLOps",
+    "items": ["AWS", "SageMaker", "GCP", "Azure", "Docker", "Kubernetes", "GitLab", "vLLM", "Langfuse", "LiteLLM"]
+  }
+]

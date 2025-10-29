@@ -1,0 +1,74 @@
+[
+  {
+    "company": "Graduate Teaching Assistant — Computer Science (Part-time)",
+    "role": "GTA",
+    "location": "Madison, WI, USA",
+    "dates": "Aug 2025 – Present",
+    "sort": 202508,
+    "highlights": [
+      "Assist in teaching CS540 — Introduction to AI (Deep Learning, NLP, Probability)",
+      "Create homework, hold office hours, support ML/AI concepts"
+    ]
+  },
+  {
+    "company": "ZS Associates",
+    "role": "Senior AI Software Engineer",
+    "location": "Bengaluru, India",
+    "dates": "Jun 2024 – Aug 2025",
+    "sort": 202406,
+    "highlights": [
+      "Designed and deployed multimodal generative AI agents (RAG, text+vision), +30% accuracy",
+      "Built GraphRAG knowledge-graph QA, +20% over baseline RAG",
+      "Led scalable multi-agent AI SaaS apps used across 3+ industries",
+      "Deployed local LLMs with sub-second latency and full data privacy"
+    ]
+  },
+  {
+    "company": "Iron Mountain",
+    "role": "Senior AI Software Engineer",
+    "location": "Bengaluru, India",
+    "dates": "Oct 2022 – May 2024",
+    "sort": 202210,
+    "highlights": [
+      "Intelligent Document Processing AI with 99% extraction accuracy (NLP + CV)",
+      "Synthetic signature generation and 98% signature detection",
+      "Fine-tuned LLMs and VLMs on domain documents (+15% performance)",
+      "Deployed doc-QA SaaS to 10+ clients"
+    ]
+  },
+  {
+    "company": "TensorIoT",
+    "role": "Machine Learning Software Engineer",
+    "location": "Bengaluru, India",
+    "dates": "Oct 2021 – Oct 2022",
+    "sort": 202110,
+    "highlights": [
+      "Time-series forecasting for attrition (97% accuracy)",
+      "Alexa skill to enhance purchase journeys",
+      "CV model for 15 wall-paint defects (98% accuracy)",
+      "Anomaly detection for predictive maintenance",
+      "A/B testing MLOps CI/CD on AWS",
+      "Customer journey tracking via CV"
+    ]
+  },
+  {
+    "company": "ABB",
+    "role": "Management Trainee (Computer Vision Researcher)",
+    "location": "Bengaluru, India",
+    "dates": "Jan 2021 – Sep 2021",
+    "sort": 202101,
+    "highlights": [
+      "AI vision inspection for robotics lines to improve defect detection and reduce manual effort"
+    ]
+  },
+  {
+    "company": "Vijna Labs",
+    "role": "Artificial Intelligence Intern",
+    "location": "Bengaluru, India",
+    "dates": "Jul 2018 – Aug 2018",
+    "sort": 201807,
+    "highlights": [
+      "Real-time object detection, image processing, and neural network training"
+    ]
+  }
+]

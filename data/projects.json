@@ -1,0 +1,30 @@
+[
+  {
+    "title": "U.S. Patent — Generative AI Agent for Intelligent Document Processing",
+    "org": "Iron Mountain",
+    "when": "Filed (Pending with USPTO)",
+    "tags": ["Generative AI", "RAG", "Agents"],
+    "description": "Use-case driven routing mechanism for document processing using agentic workflows."
+  },
+  {
+    "title": "Autonomous Vehicle (Undergraduate Project)",
+    "org": "M.S. Ramaiah Institute of Technology",
+    "when": "2019–2020",
+    "tags": ["Deep Learning", "NVIDIA Jetson Nano", "Computer Vision"],
+    "description": "Self-driving electric vehicle with ~90% lane detection accuracy."
+  },
+  {
+    "title": "Stier Racing — Team Co-Lead",
+    "org": "MSRIT",
+    "when": "2018–2020",
+    "tags": ["EV", "Leadership"],
+    "description": "Led team to design and build a Formula Electric Vehicle; won first place in Formula competitions."
+  },
+  {
+    "title": "Awards & Hackathons",
+    "org": "Various",
+    "when": "2021–2025",
+    "tags": ["Top Performer", "Project Champion", "InGenius", "EoM", "Hackathon Winner"],
+    "description": "Won Iron Mountain AI hackathon (team of 3) and multiple engineering awards."
+  }
+]

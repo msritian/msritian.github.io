@@ -23,12 +23,15 @@
         <div class="who">
           <h1 id="name">Shivam Mittal</h1>
           <p id="tagline" class="muted">Engineer • Researcher</p>
+          <p id="location" class="small muted"></p>
         </div>
       </div>
 
       <nav class="nav">
-        <a href="#works" data-nav>Works</a>
-        <a href="#reading" data-nav>Reading</a>
+        <a href="#timeline" data-nav>Timeline</a>
+        <a href="#education" data-nav>Education</a>
+        <a href="#skills" data-nav>Skills</a>
+        <a href="#projects" data-nav>Projects</a>
         <a href="#contact" data-nav>Contact</a>
         <a href="/research/">Research →</a>
       </nav>
@@ -37,26 +40,42 @@
 
       <p id="bio" class="bio muted"></p>
 
+      <div class="small">
+        <a id="resume-link" href="#" target="_blank" rel="noopener noreferrer">Download Resume</a>
+      </div>
+
       <div class="footer small muted">
         © <span id="year"></span> <span id="footer-name">Shivam Mittal</span>
       </div>
     </aside>
 
     <main class="content">
-      <section id="works" class="section">
+      <section id="timeline" class="section">
         <div class="section-head">
-          <h2>Works</h2>
-          <div id="works-filters" class="filters"></div>
+          <h2>Timeline</h2>
         </div>
-        <div id="works-grid" class="grid"></div>
+        <ul id="timeline-list" class="list"></ul>
       </section>
 
-      <section id="reading" class="section">
+      <section id="education" class="section">
         <div class="section-head">
-          <h2>Ongoing Reading</h2>
-          <div id="reading-filters" class="filters"></div>
+          <h2>Education</h2>
         </div>
-        <ul id="reading-list" class="list reading"></ul>
+        <ul id="education-list" class="list"></ul>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-head">
+          <h2>Skills</h2>
+        </div>
+        <div id="skills-grid" class="grid"></div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-head">
+          <h2>Projects & Achievements</h2>
+        </div>
+        <div id="projects-grid" class="grid"></div>
       </section>
 
       <section id="contact" class="section">

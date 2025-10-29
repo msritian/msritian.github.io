@@ -8,6 +8,11 @@ Two-column, left-sticky sidebar portfolio. Content is JSON-driven. No build step
 ## Update content
 - Edit JSON in `data/`:
   - `profile.json` — name, tagline, bio, links, contact
+  - `about.json` — location, resume link
+  - `timeline.json` — work/experience timeline
+  - `education.json` — education history
+  - `skills.json` — grouped skills
+  - `projects.json` — projects and achievements
   - `works.json` — projects with tags and years
   - `reading.json` — ongoing readings with status and notes
 
