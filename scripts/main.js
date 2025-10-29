@@ -19,6 +19,7 @@ function el(tag, attrs = {}, children = []) {
 
 function renderSocialLinks(links) {
   const container = document.getElementById("social-links");
+  if (!container) return;
   container.innerHTML = "";
   (links || []).forEach(l => {
     const a = el("a", { href: l.href, target: "_blank", rel: "noopener noreferrer" }, l.label);
@@ -28,6 +29,7 @@ function renderSocialLinks(links) {
 
 function renderContact(contact) {
   const ul = document.getElementById("contact-list");
+  if (!ul) return;
   ul.innerHTML = "";
   (contact || []).forEach(c => {
     const left = el("span", {}, c.label);
@@ -149,6 +151,7 @@ function setupScrollSpy() {
 
 function renderTimeline(items) {
   const ul = document.getElementById("timeline-list");
+  if (!ul) return;
   ul.innerHTML = "";
   (items || [])
     .sort((a,b) => (b.sort || 0) - (a.sort || 0))
@@ -164,6 +167,7 @@ function renderTimeline(items) {
 
 function renderEducation(items) {
   const ul = document.getElementById("education-list");
+  if (!ul) return;
   ul.innerHTML = "";
   (items || []).forEach(e => {
     const title = el("strong", {}, `${e.degree} — ${e.school}`);
@@ -174,6 +178,7 @@ function renderEducation(items) {
 
 function renderSkills(groups) {
   const grid = document.getElementById("skills-grid");
+  if (!grid) return;
   grid.innerHTML = "";
   (groups || []).forEach(g => {
     const h3 = el("h3", {}, g.title || "");
@@ -184,6 +189,7 @@ function renderSkills(groups) {
 
 function renderProjects(projects) {
   const grid = document.getElementById("projects-grid");
+  if (!grid) return;
   grid.innerHTML = "";
   (projects || []).forEach(p => {
     const titleNode = p.link ? el("a", { href: p.link, target: "_blank", rel: "noopener noreferrer" }, p.title) : el("span", {}, p.title || "");
