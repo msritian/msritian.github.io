@@ -1,0 +1,18 @@
+{
+  "name": "Shivam Mittal",
+  "tagline": "Engineer • Researcher",
+  "bio": "Short single-paragraph bio. What you do, where, and your core interests. Keep it concise for a sidebar.",
+  "avatar": "assets/avatar-placeholder.svg",
+  "links": [
+    { "label": "GitHub", "href": "https://github.com/msritian" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/shivam-mittal-0b916716b/" },
+    { "label": "Email", "href": "mailto:smittal39@wisc.edu" },
+    { "label": "Alt Email", "href": "mailto:mittalshivam003@gmail.com" }
+  ],
+  "contact": [
+    { "label": "Email", "value": "smittal39@wisc.edu", "href": "mailto:smittal39@wisc.edu" },
+    { "label": "Alt Email", "value": "mittalshivam003@gmail.com", "href": "mailto:mittalshivam003@gmail.com" },
+    { "label": "GitHub", "value": "@msritian", "href": "https://github.com/msritian" },
+    { "label": "LinkedIn", "value": "shivam-mittal-0b916716b", "href": "https://www.linkedin.com/in/shivam-mittal-0b916716b/" }
+  ]
+}

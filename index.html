@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Shivam Mittal — Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal site — works and ongoing reading." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="Shivam Mittal — Portfolio" />
+  <meta property="og:description" content="Works and ongoing reading." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://msritian.github.io" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="fetch" href="data/profile.json" crossorigin="anonymous" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="id">
+        <img id="avatar" class="avatar" src="assets/avatar-placeholder.svg" alt="Avatar" />
+        <div class="who">
+          <h1 id="name">Shivam Mittal</h1>
+          <p id="tagline" class="muted">Engineer • Researcher</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#works" data-nav>Works</a>
+        <a href="#reading" data-nav>Reading</a>
+        <a href="#contact" data-nav>Contact</a>
+        <a href="/research/">Research →</a>
+      </nav>
+
+      <div class="social" id="social-links"></div>
+
+      <p id="bio" class="bio muted"></p>
+
+      <div class="footer small muted">
+        © <span id="year"></span> <span id="footer-name">Shivam Mittal</span>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="works" class="section">
+        <div class="section-head">
+          <h2>Works</h2>
+          <div id="works-filters" class="filters"></div>
+        </div>
+        <div id="works-grid" class="grid"></div>
+      </section>
+
+      <section id="reading" class="section">
+        <div class="section-head">
+          <h2>Ongoing Reading</h2>
+          <div id="reading-filters" class="filters"></div>
+        </div>
+        <ul id="reading-list" class="list reading"></ul>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <ul id="contact-list" class="list compact"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="scripts/main.js" defer></script>
+</body>
+</html>
