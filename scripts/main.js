@@ -350,19 +350,7 @@ async function boot() {
     // Contact extras: location text and form submit handler
     const cl = document.getElementById("contact-location");
     if (cl && about?.location) cl.textContent = about.location;
-    const form = document.getElementById("contact-form");
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = document.getElementById("cf-name")?.value || "";
-        const email = document.getElementById("cf-email")?.value || "";
-        const message = document.getElementById("cf-message")?.value || "";
-        const to = (profile.contact || []).find(c => (c.label || "").toLowerCase().includes("email"))?.value || "";
-        const subject = encodeURIComponent(`Message from ${name || "Website"}`);
-        const body = encodeURIComponent(`${message}\n\nFrom: ${name}${email ? ` <${email}>` : ''}`);
-        if (to) window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-      });
-    }
+    // Let the native form submission handle POST to FormSubmit
 
     setupScrollSpy();
   } catch (e) {
