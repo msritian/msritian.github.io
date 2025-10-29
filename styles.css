@@ -123,7 +123,7 @@ html{ scroll-behavior: smooth }
 #timeline-list::before{
   content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--border); transform: translateX(-50%);
 }
-#timeline-list .t-item{ display:grid; grid-template-columns: 1fr 40px 1fr; align-items: center; gap: 10px; margin: 18px 0 }
+#timeline-list .t-item{ display:grid; grid-template-columns: 1fr 40px 1fr; align-items: center; gap: 14px; margin: 22px 0 }
 #timeline-list .t-col.mid{ display:flex; align-items:center; justify-content:center }
 /* Side-aligned dot with pulse (doesn't cross the line) */
 #timeline-list .t-dot{ position: relative; width: 10px; height: 10px; border-radius: 999px; background: var(--bg); border: 2px solid var(--fg) }
@@ -137,7 +137,8 @@ html{ scroll-behavior: smooth }
 #timeline-list .t-item.left .t-dot::after{ clip-path: inset(-8px 50% -8px -8px) }
 #timeline-list .t-item.right .t-dot::after{ clip-path: inset(-8px -8px -8px 50%) }
 @keyframes pulse{ 0%{ transform: scale(.6); opacity:.7 } 70%{ transform: scale(1.25); opacity:0 } 100%{ transform: scale(.6); opacity:0 } }
-#timeline-list .t-card{ border:1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 14px }
+#timeline-list .t-card{ border:1px solid var(--border); border-radius: var(--radius); background: var(--card); padding: 14px; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease }
+#timeline-list .t-card:hover{ transform: translateY(-1px); border-color: color-mix(in oklab, var(--border) 50%, var(--fg) 10%); box-shadow: 0 6px 16px rgba(0,0,0,.25) }
 #timeline-list .t-card h3{ margin: 0 0 4px; font-size: 1rem }
 #timeline-list .t-card .meta{ color: var(--muted); margin-top: 2px }
 #timeline-list .t-card ul{ list-style: none; margin: 8px 0 0; padding: 0; display:flex; flex-direction: column; gap: 8px }
@@ -146,7 +147,7 @@ html{ scroll-behavior: smooth }
   content: ""; position: absolute; left: 0; top: .58em; width: 9px; height: 9px; border-radius: 999px;
   background: transparent; border: 2px solid color-mix(in oklab, var(--fg) 70%, transparent);
 }
-#timeline-list .t-date{ color: var(--muted); font-size: .9rem; text-align: right }
+#timeline-list .t-date{ color: var(--muted); font-size: .9rem; text-align: right; padding: 0 8px }
 #timeline-list .t-item.right .t-date{ text-align: left }
 #timeline-list .t-badges{ display:flex; flex-wrap: wrap; gap: 6px; margin-top: 6px }
 #timeline-list .badge{ background: var(--bg); border:1px solid var(--border); color: var(--muted); padding: 2px 8px; border-radius: 999px; font-size: .8rem }
@@ -184,11 +185,19 @@ html{ scroll-behavior: smooth }
 .hero{ padding: 56px 0 }
 .hero-inner{ display:grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: start }
 .hero-photo img{ width: 160px; height: 160px; border-radius: 50%; border: 2px solid var(--border); object-fit: cover; background: var(--card) }
-.hero-quote blockquote{ font-size: 1.15rem; line-height: 1.7; margin: 0 0 8px }
+/* Elevate the hero heading to feel like an H1 */
+.hero-quote blockquote{
+  margin: 0 0 10px; color: var(--fg);
+  font-weight: 700; letter-spacing: -0.01em;
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
+  line-height: 1.2;
+}
 .hero-summary{ margin-top: 10px; display:flex; flex-wrap: wrap; gap: 8px }
-.hero-summary .badge{ background: var(--accent-weak); border-color: var(--border) }
+.hero-summary .badge{ background: color-mix(in oklab, var(--bg) 90%, transparent); border-color: var(--border); font-size: .9rem; padding: 6px 10px }
 .hero-cta{ display:flex; gap:10px; margin-top: 12px }
-.btn{ display:inline-block; padding: 8px 12px; border-radius: 999px; border:1px solid var(--fg) }
+.btn{ display:inline-block; padding: 10px 14px; border-radius: 999px; border:1px solid var(--fg); background: transparent }
+.btn:hover{ background: var(--fg); color: var(--bg) }
 .btn.ghost{ border-color: var(--border) }
+.btn.ghost:hover{ background: var(--accent-weak); color: var(--fg) }
 
 .footer{ border-top:1px solid var(--border); padding: 20px 0; color: var(--muted) }
