@@ -242,7 +242,7 @@ html{ scroll-behavior: smooth }
 .notice .line{ display:flex; align-items: center; gap: 10px }
 .notice .emph{ font-weight: 700 }
 .notice .muted{ color: var(--muted) }
-.notice svg{ width:18px; height:18px; flex: 0 0 auto }
+.notice .icon{ font-size: 18px; line-height: 1; flex: 0 0 auto }
 .hero-cta{ display:flex; gap:10px; margin-top: 12px }
 .btn{ display:inline-block; padding: 10px 14px; border-radius: 999px; border:1px solid var(--fg); background: transparent }
 .btn:hover{ background: var(--fg); color: var(--bg) }

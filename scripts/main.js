@@ -374,15 +374,8 @@ async function boot() {
     // Availability banner
     const availWrap = document.getElementById("availability");
     if (availWrap && about?.availability) {
-      const horn = el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
-        el("path", { d: "M3 11v2a4 4 0 0 0 4 4h1" }),
-        el("path", { d: "M14 6v12l7-4V10l-7-4Z" }),
-        el("path", { d: "M7 15v-6" })
-      ]);
-      const mail = el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
-        el("rect", { x: "3", y: "5", width: "18", height: "14", rx: "2" }),
-        el("path", { d: "m3 7 9 6 9-6" })
-      ]);
+      const horn = el("span", { class: "icon", "aria-hidden": "true" }, "📣");
+      const mail = el("span", { class: "icon", "aria-hidden": "true" }, "✉️");
       availWrap.innerHTML = "";
       const line1 = el("div", { class: "line" }, [horn, el("div", { class: "emph" }, about.availability.headline)]);
       // Email button: prefer primary email from profile.contact, fallback to profile.links first mailto
