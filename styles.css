@@ -233,7 +233,10 @@ html{ scroll-behavior: smooth }
 .contact-links a{ display:flex; align-items:center; gap: 10px; color: var(--fg); border:1px solid var(--border); background: var(--card); padding: 10px 12px; border-radius: var(--radius) }
 .contact-links a:hover{ border-color: var(--fg) }
 .contact-links svg{ width:18px; height:18px }
-.contact-links .contact-item{ display:flex; align-items:center; gap:10px; color: var(--muted); border:1px dashed var(--border); background: color-mix(in oklab, var(--bg) 94%, transparent); padding:10px 12px; border-radius: var(--radius) }
+.contact-links .contact-item{ display:none }
+.contact-left .contact-subhead{ margin: 14px 0 8px; font-size: 1.2rem; font-weight: 700; color: var(--fg) }
+.location-row{ display:flex; align-items:center; gap:10px; color: var(--muted); }
+.location-row svg{ width:18px; height:18px }
 .contact-form{ display:flex; flex-direction: column; gap: 10px }
 .label{ display:block; margin-bottom: 6px; color: var(--muted); font-size: .9rem }
 .input, .textarea{ width:100%; border:1px solid var(--border); border-radius: var(--radius); background: var(--card); color: var(--fg); padding: 10px 12px }

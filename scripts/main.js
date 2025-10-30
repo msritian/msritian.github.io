@@ -356,17 +356,19 @@ async function boot() {
       summaryItems.forEach(s => summaryEl.append(el("span", { class: "badge" }, s)));
     }
 
-    // Contact extras: add location row with pin icon inside contact links and clear legacy text
-    const cl = document.getElementById("contact-location");
-    if (cl) cl.textContent = "";
-    const linksBox = document.getElementById("contact-links");
-    if (linksBox && about?.location) {
-      const pin = el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
-        el("path", { d: "M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10" }),
-        el("circle", { cx: "12", cy: "11", r: "2.5" })
-      ]);
-      const item = el("div", { class: "contact-item" }, [pin, el("span", {}, about.location)]);
-      linksBox.append(item);
+    // Contact extras: render location like reference (subhead + row, no border box)
+    const locWrap = document.querySelector('.contact-left .location');
+    if (locWrap) {
+      locWrap.innerHTML = "";
+      if (about?.location) {
+        const sub = el("h4", { class: "contact-subhead" }, "Location");
+        const pin = el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
+          el("path", { d: "M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10" }),
+          el("circle", { cx: "12", cy: "11", r: "2.5" })
+        ]);
+        const row = el("div", { class: "location-row" }, [pin, el("span", {}, about.location)]);
+        locWrap.append(sub, row);
+      }
     }
     // Let the native form submission handle POST to FormSubmit
 
