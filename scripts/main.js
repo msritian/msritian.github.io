@@ -286,9 +286,12 @@ async function boot() {
         const icon = el("span", { class: "icon", "aria-hidden": "true" }, "📝");
         const text = el("span", {});
         // Build as a single inline run so there is no extra gap before the period
+        let resumeHref = about.resume;
+        const ver = about.resumeVersion || new Date().toISOString().slice(0,10);
+        if (resumeHref && !resumeHref.includes("?")) resumeHref = `${resumeHref}?v=${encodeURIComponent(ver)}`;
         text.append(
           el("span", { class: "muted" }, "You can find my Resume "),
-          el("a", { href: about.resume, target: "_blank", rel: "noopener noreferrer" }, "here"),
+          el("a", { href: resumeHref, target: "_blank", rel: "noopener noreferrer" }, "here"),
           el("span", { class: "muted" }, ".")
         );
         note.append(icon, text);
