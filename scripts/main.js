@@ -333,13 +333,28 @@ async function boot() {
           else classes.push("icon-mail");
         }
         const title = l.title || l.label;
-        const attrs = { class: classes.join(" "), href: l.href, title };
-        if (l.href && (l.href.startsWith("http") || l.href.startsWith("mailto:"))) { attrs.target = "_blank"; attrs.rel = "noopener noreferrer"; }
-        const a = el("a", attrs, [
-          icon || document.createTextNode(l.label),
-          el("span", { class: "sr-only" }, title)
-        ]);
-        top.append(a);
+        if (l.label.toLowerCase().includes("phone") || l.href?.startsWith("tel:")) {
+          // Render as non-clickable button with tooltip
+          const btn = el("button", { class: classes.join(" "), type: "button", title, "data-tip": title }, [
+            icon || document.createTextNode(l.label),
+            el("span", { class: "sr-only" }, title)
+          ]);
+          // Toggle tooltip on click for touch devices
+          btn.addEventListener("click", () => {
+            btn.classList.add("tip-open");
+            clearTimeout(btn._tipTimer);
+            btn._tipTimer = setTimeout(() => btn.classList.remove("tip-open"), 2000);
+          });
+          top.append(btn);
+        } else {
+          const attrs = { class: classes.join(" "), href: l.href, title };
+          if (l.href && (l.href.startsWith("http") || l.href.startsWith("mailto:"))) { attrs.target = "_blank"; attrs.rel = "noopener noreferrer"; }
+          const a = el("a", attrs, [
+            icon || document.createTextNode(l.label),
+            el("span", { class: "sr-only" }, title)
+          ]);
+          top.append(a);
+        }
       });
     }
     renderContact(profile.contact || []);
