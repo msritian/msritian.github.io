@@ -283,12 +283,15 @@ async function boot() {
       const note = document.getElementById("resume-note");
       if (note) {
         note.innerHTML = "";
-        note.append(
-          el("span", { class: "icon", "aria-hidden": "true" }, "📝"),
-          el("span", { class: "muted" }, "You can find my curriculum vitae "),
+        const icon = el("span", { class: "icon", "aria-hidden": "true" }, "📝");
+        const text = el("span", {});
+        // Build as a single inline run so there is no extra gap before the period
+        text.append(
+          el("span", { class: "muted" }, "You can find my Resume "),
           el("a", { href: about.resume, target: "_blank", rel: "noopener noreferrer" }, "here"),
           el("span", { class: "muted" }, ".")
         );
+        note.append(icon, text);
       }
     }
 
