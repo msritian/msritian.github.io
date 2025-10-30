@@ -238,6 +238,11 @@ html{ scroll-behavior: smooth }
 @media (min-width: 1024px){ .hero-quote blockquote{ white-space: nowrap } }
 .hero-summary{ margin-top: 10px; display:flex; flex-wrap: wrap; gap: 8px }
 .hero-summary .badge{ background: var(--bg); background: color-mix(in oklab, var(--bg) 90%, transparent); border-color: var(--border); font-size: .9rem; padding: 6px 10px }
+.notice{ margin-top: 10px; display:flex; flex-direction: column; gap: 6px; border:1px solid var(--border); background: var(--card); border-radius: 10px; padding: 10px 12px }
+.notice .line{ display:flex; align-items: center; gap: 10px }
+.notice .emph{ font-weight: 700 }
+.notice .muted{ color: var(--muted) }
+.notice svg{ width:18px; height:18px; flex: 0 0 auto }
 .hero-cta{ display:flex; gap:10px; margin-top: 12px }
 .btn{ display:inline-block; padding: 10px 14px; border-radius: 999px; border:1px solid var(--fg); background: transparent }
 .btn:hover{ background: var(--fg); color: var(--bg) }
