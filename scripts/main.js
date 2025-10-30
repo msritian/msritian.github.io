@@ -302,6 +302,11 @@ async function boot() {
             el("path", { d: "M20.45 20.45h-3.57v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.32V9h3.42v1.56h.05c.48-.91 1.66-1.85 3.41-1.85 3.65 0 4.33 2.4 4.33 5.53v6.21zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z", fill: "currentColor" })
           ]);
         }
+        if (lower.includes("phone") || lower.includes("tel")) {
+          return el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
+            el("path", { d: "M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 3.18 2 2 0 0 1 4.11 1h2a2 2 0 0 1 2 1.72c.12.86.32 1.7.58 2.5a2 2 0 0 1-.45 2.11L7.1 8.9a16 16 0 0 0 6 6l1.57-1.14a2 2 0 0 1 2.11-.45c.8.26 1.64.46 2.5.58A2 2 0 0 1 22 16.92z" })
+          ]);
+        }
         if (lower.includes("email") || lower.includes("mail")) {
           return el("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "1.8", "aria-hidden": "true" }, [
             el("rect", { x: "3", y: "5", width: "18", height: "14", rx: "2" }),
@@ -324,11 +329,15 @@ async function boot() {
         const classes = ["icon-btn"]; if (icon){
           if (l.label.toLowerCase().includes("github")) classes.push("icon-github");
           else if (l.label.toLowerCase().includes("linkedin")) classes.push("icon-linkedin");
+          else if (l.label.toLowerCase().includes("phone") || l.href?.startsWith("tel:")) classes.push("icon-phone");
           else classes.push("icon-mail");
         }
-        const a = el("a", { class: classes.join(" "), href: l.href, target: "_blank", rel: "noopener noreferrer", title: l.label }, [
+        const title = l.title || l.label;
+        const attrs = { class: classes.join(" "), href: l.href, title };
+        if (l.href && (l.href.startsWith("http") || l.href.startsWith("mailto:"))) { attrs.target = "_blank"; attrs.rel = "noopener noreferrer"; }
+        const a = el("a", attrs, [
           icon || document.createTextNode(l.label),
-          el("span", { class: "sr-only" }, l.label)
+          el("span", { class: "sr-only" }, title)
         ]);
         top.append(a);
       });

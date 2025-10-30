@@ -201,6 +201,7 @@ html{ scroll-behavior: smooth }
 .top-social .icon-github svg{ fill: var(--fg) }
 .top-social .icon-linkedin svg{ fill: var(--fg) }
 .top-social .icon-mail svg{ stroke: var(--fg); fill: none }
+.top-social .icon-phone svg{ stroke: var(--fg); fill: none }
 
 .hero{ padding: 56px 0 }
 .hero-inner{ display:grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: start }
