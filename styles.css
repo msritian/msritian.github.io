@@ -163,12 +163,18 @@ html{ scroll-behavior: smooth }
 @media (max-width: 768px){
   #timeline-list::before{ left: 24px; transform: none }
   #timeline-list .t-item{ grid-template-columns: 24px 1fr; gap: 12px }
-  #timeline-list .t-col.mid{ align-self: flex-start; justify-content: center }
+  /* Place the dot column on the left spanning the stack */
+  #timeline-list .t-col.mid{ align-self: flex-start; justify-content: center; grid-column: 1; grid-row: 1 / span 2 }
   #timeline-list .t-dot{ transform: none }
-  /* Stack both date and card in the content column for all items */
-  #timeline-list .t-col.left, #timeline-list .t-col.right{ display: contents }
-  #timeline-list .t-date{ grid-column: 2; text-align: left; margin: 0 0 6px 0 }
-  #timeline-list .t-card{ grid-column: 2 }
+  /* Stack both date and card in the content column for all items using explicit rows */
+  #timeline-list .t-col.left, #timeline-list .t-col.right{ grid-column: 2 }
+  /* For left-side items: date is in .t-col.right (row 1), card is in .t-col.left (row 2) */
+  #timeline-list .t-item.left .t-col.right{ grid-row: 1 }
+  #timeline-list .t-item.left .t-col.left{ grid-row: 2 }
+  /* For right-side items: date is in .t-col.left (row 1), card is in .t-col.right (row 2) */
+  #timeline-list .t-item.right .t-col.left{ grid-row: 1 }
+  #timeline-list .t-item.right .t-col.right{ grid-row: 2 }
+  #timeline-list .t-date{ text-align: left; margin: 0 0 6px 0 }
   /* Prevent long text from overflowing on narrow screens */
   #timeline-list .t-card, #timeline-list .t-card h3, #timeline-list .t-card li, #timeline-list .t-card .meta{
     word-break: break-word; overflow-wrap: anywhere;
