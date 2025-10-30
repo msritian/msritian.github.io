@@ -392,12 +392,21 @@ async function boot() {
   const mail = el("span", { class: "icon", "aria-hidden": "true" }, "📥");
       availWrap.innerHTML = "";
       const line1 = el("div", { class: "line" }, [horn, el("div", { class: "emph" }, about.availability.headline)]);
-      // Email button: prefer primary email from profile.contact, fallback to profile.links first mailto
-      let mailHref = "#";
-      const contact = (profile?.contact || []);
-      const mailItem = contact.find(c => (c.href || "").startsWith("mailto:")) || (profile.links || []).find(l => (l.href || "").startsWith("mailto:"));
-      if (mailItem?.href) mailHref = mailItem.href;
-      const line2 = el("div", { class: "line muted" }, [mail, el("a", { href: mailHref }, about.availability.cta || "Email me")]);
+      // Change CTA to scroll to the contact form instead of opening mail
+      const contactHref = "#contact";
+      const ctaLink = el("a", { href: contactHref }, about.availability.cta || "Email me");
+      // Smooth scroll and focus the first input for convenience
+      ctaLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        const section = document.getElementById("contact");
+        if (section?.scrollIntoView) section.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Focus after a tick so the element exists in view
+        setTimeout(() => {
+          const first = document.getElementById("cf-name") || section?.querySelector("input, textarea, button");
+          if (first && typeof first.focus === "function") first.focus();
+        }, 350);
+      });
+      const line2 = el("div", { class: "line muted" }, [mail, ctaLink]);
       availWrap.append(line1, line2);
     }
 
