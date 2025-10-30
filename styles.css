@@ -163,8 +163,14 @@ html{ scroll-behavior: smooth }
   #timeline-list .t-item{ grid-template-columns: 24px 1fr; gap: 12px }
   #timeline-list .t-col.mid{ align-self: flex-start; justify-content: center }
   #timeline-list .t-dot{ transform: none }
-  #timeline-list .t-col.right{ display:none }
-  #timeline-list .t-date{ text-align: left; margin-bottom: 6px }
+  /* Stack both date and card in the content column for all items */
+  #timeline-list .t-col.left, #timeline-list .t-col.right{ display: contents }
+  #timeline-list .t-date{ grid-column: 2; text-align: left; margin: 0 0 6px 0 }
+  #timeline-list .t-card{ grid-column: 2 }
+  /* Prevent long text from overflowing on narrow screens */
+  #timeline-list .t-card, #timeline-list .t-card h3, #timeline-list .t-card li, #timeline-list .t-card .meta{
+    word-break: break-word; overflow-wrap: anywhere;
+  }
 }
 
 /* Skills grid tighter like badge groups */
