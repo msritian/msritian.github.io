@@ -29,6 +29,8 @@ body{
   background: var(--bg); color: var(--fg); line-height: 1.6;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
+a img{ max-width: 100%; height: auto }
+img{ max-width: 100%; height: auto }
 a,button{transition: all .15s ease}
 a{color: inherit; text-decoration: none}
 a:hover{ text-decoration: underline; text-underline-offset: 3px }
@@ -233,6 +235,18 @@ html{ scroll-behavior: smooth }
 .btn:hover{ background: var(--fg); color: var(--bg) }
 .btn.ghost{ border-color: var(--border) }
 .btn.ghost:hover{ background: var(--accent-weak); color: var(--fg) }
+
+/* Mobile responsiveness tweaks */
+@media (max-width: 700px){
+  .hero-inner{ grid-template-columns: 1fr }
+  .hero-photo{ display:flex; justify-content:center }
+  .hero-photo img{ width: 120px; height: 120px }
+}
+@media (max-width: 600px){
+  .header-inner{ flex-wrap: wrap; gap: 10px }
+  .top-nav{ order: 3; width: 100%; justify-content: center }
+  .profile-mini{ flex: 1 }
+}
 
 .footer{ border-top:1px solid var(--border); padding: 20px 0; color: var(--muted) }
 
