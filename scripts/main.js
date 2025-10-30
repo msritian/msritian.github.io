@@ -160,28 +160,6 @@ function renderReading(reading) {
   draw(null);
 }
 
-function setupScrollSpy() {
-  const links = Array.from(document.querySelectorAll('[data-nav]'));
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const active = new Set();
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const id = entry.target.getAttribute('id');
-      const link = links.find(a => a.getAttribute('href') === `#${id}`);
-      if (!link) return;
-      if (entry.isIntersecting) {
-        active.add(link);
-      } else {
-        active.delete(link);
-      }
-    });
-    links.forEach(l => l.classList.remove('active'));
-    const pick = links.find(l => active.has(l)) || null;
-    if (pick) pick.classList.add('active');
-  }, { rootMargin: '-40% 0px -55% 0px', threshold: [0, 1.0] });
-  sections.forEach(s => obs.observe(s));
-}
-
 function renderTimeline(items) {
   const ul = document.getElementById("timeline-list");
   if (!ul) return;
@@ -341,14 +319,20 @@ async function boot() {
       headerLinks.forEach(l => {
         const icon = makeIcon(l.label);
         const classes = ["icon-btn"]; if (icon){
-          if (l.label.toLowerCase().includes("github")) classes.push("icon-github");
-          else if (l.label.toLowerCase().includes("linkedin")) classes.push("icon-linkedin");
-          else if (l.label.toLowerCase().includes("phone") || l.href?.startsWith("tel:")) classes.push("icon-phone");
+          const lower = (l.label || "").toLowerCase();
+          if (lower.includes("github")) classes.push("icon-github");
+          else if (lower.includes("linkedin")) classes.push("icon-linkedin");
+          else if (lower.includes("phone") || l.href?.startsWith("tel:")) classes.push("icon-phone");
           else classes.push("icon-mail");
         }
-        const title = l.title || l.label;
-        if (l.label.toLowerCase().includes("phone") || l.href?.startsWith("tel:")) {
-          // Render as non-clickable button with tooltip
+        const lowerLabel = (l.label || "").toLowerCase();
+        const isPhone = lowerLabel.includes("phone") || l.href?.startsWith("tel:");
+        const isEmail = lowerLabel.includes("email") || lowerLabel.includes("mail") || l.href?.startsWith("mailto:");
+        const emailDisplay = isEmail ? (l.href?.replace(/^mailto:/, "") || l.title || l.label) : null;
+        const title = isEmail ? emailDisplay : (l.title || l.label);
+
+        if (isPhone || isEmail) {
+          // Render as non-clickable button with tooltip (show number/email)
           const btn = el("button", { class: classes.join(" "), type: "button", title, "data-tip": title }, [
             icon || document.createTextNode(l.label),
             el("span", { class: "sr-only" }, title)
