@@ -280,8 +280,16 @@ async function boot() {
   const q = document.getElementById("hero-quote-text");
   if (q) q.textContent = quote;
     if (about?.resume) {
-      const a = document.getElementById("resume-link");
-      a.href = about.resume;
+      const note = document.getElementById("resume-note");
+      if (note) {
+        note.innerHTML = "";
+        note.append(
+          el("span", { class: "icon", "aria-hidden": "true" }, "📝"),
+          el("span", { class: "muted" }, "You can find my curriculum vitae "),
+          el("a", { href: about.resume, target: "_blank", rel: "noopener noreferrer" }, "here"),
+          el("span", { class: "muted" }, ".")
+        );
+      }
     }
 
   renderSocialLinks(profile.links || []);
@@ -375,7 +383,7 @@ async function boot() {
     const availWrap = document.getElementById("availability");
     if (availWrap && about?.availability) {
       const horn = el("span", { class: "icon", "aria-hidden": "true" }, "📣");
-      const mail = el("span", { class: "icon", "aria-hidden": "true" }, "✉️");
+  const mail = el("span", { class: "icon", "aria-hidden": "true" }, "📥");
       availWrap.innerHTML = "";
       const line1 = el("div", { class: "line" }, [horn, el("div", { class: "emph" }, about.availability.headline)]);
       // Email button: prefer primary email from profile.contact, fallback to profile.links first mailto

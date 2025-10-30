@@ -243,6 +243,11 @@ html{ scroll-behavior: smooth }
 .notice .emph{ font-weight: 700 }
 .notice .muted{ color: var(--muted) }
 .notice .icon{ font-size: 18px; line-height: 1; flex: 0 0 auto }
+
+/* Inline resume note */
+.inline-note{ margin-top: 10px; display:flex; align-items:center; gap:10px }
+.inline-note .icon{ font-size: 18px; line-height: 1 }
+.inline-note a{ color: #3aa3e3 }
 .hero-cta{ display:flex; gap:10px; margin-top: 12px }
 .btn{ display:inline-block; padding: 10px 14px; border-radius: 999px; border:1px solid var(--fg); background: transparent }
 .btn:hover{ background: var(--fg); color: var(--bg) }
