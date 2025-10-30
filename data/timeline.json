@@ -6,8 +6,8 @@
     "dates": "Aug 2025 – Present",
     "sort": 202508,
     "highlights": [
-      "Assist in teaching CS540 — Introduction to AI (Deep Learning, NLP, Probability)",
-      "Create homework, hold office hours, support ML/AI concepts"
+      "Assist in teaching CS540 - Introduction to Artificial Intelligence, focusing on Deep learning, Natural language processing (NLP), and Probability",
+      "Create homework assignments, hold office hours, support students with concepts related to Machine learning and AI."
     ]
   },
   {
@@ -17,10 +17,10 @@
     "dates": "Jun 2024 – Aug 2025",
     "sort": 202406,
     "highlights": [
-      "Designed and deployed multimodal generative AI agents (RAG, text+vision), +30% accuracy",
-      "Built GraphRAG knowledge-graph QA, +20% over baseline RAG",
-      "Led scalable multi-agent AI SaaS apps used across 3+ industries",
-      "Deployed local LLMs with sub-second latency and full data privacy"
+      "Designed and deployed production-ready Generative AI multimodal agents with advanced text and vision capabilities leveraging Retrieval-Augmented Generation (RAG) improving response accuracy by 30%.",
+      "Built GraphRAG, a knowledge graph algorithm for document QA, achieving 20% higher accuracy than RAG agents.",
+      "Led multimodal, scalable Multi-Agent AI SaaS applications deployed across 3+ industries with thousands of users.",
+      "Specialized in deploying local LLMs with sub-second latency, 100% data privacy compliance for client-facing projects."
     ]
   },
   {
@@ -30,10 +30,10 @@
     "dates": "Oct 2022 – May 2024",
     "sort": 202210,
     "highlights": [
-      "Intelligent Document Processing AI with 99% extraction accuracy (NLP + CV)",
-      "Synthetic signature generation and 98% signature detection",
-      "Fine-tuned LLMs and VLMs on domain documents (+15% performance)",
-      "Deployed doc-QA SaaS to 10+ clients"
+      "Developed production-ready Intelligent Document Processing AI solutions achieving 99% data extraction accuracy across diverse industries using Natural language processing and Computer vision.",
+      "Engineered synthetic signature generation and developed a generalized signature detection model with 98% accuracy.",
+      "Fine-tuned large language and multimodal models on domain-specific documents, improving performance by 15%.",
+      "Developed production ready AI SaaS applications for document question answering, deployed to 10+ clients."
     ]
   },
   {
@@ -43,12 +43,12 @@
     "dates": "Oct 2021 – Oct 2022",
     "sort": 202110,
     "highlights": [
-      "Time-series forecasting for attrition (97% accuracy)",
-      "Alexa skill to enhance purchase journeys",
-      "CV model for 15 wall-paint defects (98% accuracy)",
-      "Anomaly detection for predictive maintenance",
-      "A/B testing MLOps CI/CD on AWS",
-      "Customer journey tracking via CV"
+      "Developed time series forecasting models achieving 97% accuracy to predict employee attrition rates.",
+      "Created a customized Alexa skill via the Alexa Developer Console to enhance customer purchase journeys.",
+      "Developed a deep neural network, achieving 98% accuracy in detecting 15 distinct wall paint defects.",
+      "Implemented predictive maintenance models for anomaly detection in machinery and sensors.",
+      "Engineered an end-to-end A/B testing MLOps CI/CD pipeline on AWS, adaptable for machine learning use cases.",
+      "Developed a customer journey tracking solution leveraging computer vision algorithms."
     ]
   },
   {
@@ -58,7 +58,7 @@
     "dates": "Jan 2021 – Sep 2021",
     "sort": 202101,
     "highlights": [
-      "AI vision inspection for robotics lines to improve defect detection and reduce manual effort"
+      "Developed AI vision inspection for robotics manufacturing lines, boosting defect detection and reducing manual labor."
     ]
   },
   {
@@ -68,7 +68,7 @@
     "dates": "Jul 2018 – Aug 2018",
     "sort": 201807,
     "highlights": [
-      "Real-time object detection, image processing, and neural network training"
+      "Worked on real time object detection, image processing, computer vision and training neural networks."
     ]
   }
 ]
