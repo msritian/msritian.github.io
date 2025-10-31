@@ -234,6 +234,9 @@ function renderProjects(projects) {
   });
 }
 
+// Safe no-op: prevent runtime errors if scroll spy isn't implemented yet
+function setupScrollSpy(){ /* intentionally empty */ }
+
 async function boot() {
   try {
     const [profile, about, timeline, education, skills, projects] = await Promise.all([
