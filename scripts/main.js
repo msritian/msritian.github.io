@@ -332,18 +332,19 @@ async function boot() {
         const title = isEmail ? emailDisplay : (l.title || l.label);
 
         if (isPhone || isEmail) {
-          // Render as non-clickable button with tooltip (show number/email)
-          const btn = el("button", { class: classes.join(" "), type: "button", title, "data-tip": title }, [
-            icon || document.createTextNode(l.label),
-            el("span", { class: "sr-only" }, title)
+          // Render as visible, copyable pill with icon and text (no tooltip)
+          const pillClasses = ["contact-pill"]; // custom style for visible text
+          if (classes.includes("icon-phone")) pillClasses.push("icon-phone");
+          else if (classes.includes("icon-mail")) pillClasses.push("icon-mail");
+
+          const displayText = isPhone ? (l.href?.replace(/^tel:/, "") || l.title || l.label)
+                                      : (emailDisplay || l.label);
+
+          const pill = el("span", { class: pillClasses.join(" ") }, [
+            icon || document.createTextNode(""),
+            el("span", { class: "contact-text" }, displayText)
           ]);
-          // Toggle tooltip on click for touch devices
-          btn.addEventListener("click", () => {
-            btn.classList.add("tip-open");
-            clearTimeout(btn._tipTimer);
-            btn._tipTimer = setTimeout(() => btn.classList.remove("tip-open"), 2000);
-          });
-          top.append(btn);
+          top.append(pill);
         } else {
           const attrs = { class: classes.join(" "), href: l.href, title };
           if (l.href && (l.href.startsWith("http") || l.href.startsWith("mailto:"))) { attrs.target = "_blank"; attrs.rel = "noopener noreferrer"; }
